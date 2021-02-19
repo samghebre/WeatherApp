@@ -1,17 +1,26 @@
 package com.samghebremedhin.WeatherApp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
+
+@Table(name="city")
+@Entity
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class City {
-    private Long cityId;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String cityName;
     private String zipCode;
 
-
     public Long getCityId() {
-        return cityId;
+        return id;
     }
 
     public void setCityId(Long cityId) {
-        this.cityId = cityId;
+        this.id = id;
     }
 
     public String getCityName() {
@@ -33,9 +42,10 @@ public class City {
     @Override
     public String toString() {
         return "City{" +
-                "cityId=" + cityId +
+                "cityId=" + id +
                 ", cityName='" + cityName + '\'' +
                 ", zipCode='" + zipCode + '\'' +
                 '}';
-    }
+   }
+
 }

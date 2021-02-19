@@ -1,64 +1,58 @@
 package com.samghebremedhin.WeatherApp.model;
 
-import java.util.Date;
+import javax.persistence.*;
 
+@Table(name="weather")
+@Entity
 public class Weather {
-    private Date currentDate;
-    private Double temperature;
-    private Double precipitation;
-    private Double humidity;
-    private Double windSpeed;
-    private Long cityId;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    @OneToOne
+    private Main main;
+    @OneToOne
+    private Coord coord;
+    private String description;
     private String cityName;
 
-    City city = new City();
 
-    public Date getCurrentDate() {
-        return currentDate;
+
+    public Weather() {
     }
 
-    public void setCurrentDate(Date currentDate) {
-        this.currentDate = currentDate;
+    public Long getId() {
+        return id;
     }
 
-    public Double getTemperature() {
-        return temperature;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setTemperature(Double temperature) {
-        this.temperature = temperature;
+    public Main getMain() {
+        return main;
     }
 
-    public Double getPrecipitation() {
-        return precipitation;
+    public void setMain(Main main) {
+        this.main = main;
     }
 
-    public void setPrecipitation(Double precipitation) {
-        this.precipitation = precipitation;
+    public String getDescription() {
+        return description;
     }
 
-    public Double getHumidity() {
-        return humidity;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public void setHumidity(Double humidity) {
-        this.humidity = humidity;
+
+
+    public Coord getCoord() {
+        return coord;
     }
 
-    public Double getWindSpeed() {
-        return windSpeed;
-    }
-
-    public void setWindSpeed(Double windSpeed) {
-        this.windSpeed = windSpeed;
-    }
-
-    public Long getCityId() {
-        return cityId;
-    }
-
-    public void setCityId(Long cityId) {
-        this.cityId = cityId;
+    public void setCoord(Coord coord) {
+        this.coord = coord;
     }
 
     public String getCityName() {
@@ -72,14 +66,11 @@ public class Weather {
     @Override
     public String toString() {
         return "Weather{" +
-                "currentDate=" + currentDate +
-                ", temperature=" + temperature +
-                ", precipitation=" + precipitation +
-                ", humidity=" + humidity +
-                ", windSpeed=" + windSpeed +
-                ", cityId=" + cityId +
+                "id=" + id +
+                ", main=" + main +
+                ", coord=" + coord +
+                ", description='" + description + '\'' +
                 ", cityName='" + cityName + '\'' +
-                ", city=" + city +
                 '}';
     }
 }

@@ -1,9 +1,8 @@
 package com.samghebremedhin.WeatherApp.exceptions;
 
 import org.springframework.web.bind.annotation.ResponseStatus;
-import javax.swing.plaf.PanelUI;
 
-    @ResponseStatus
+@ResponseStatus
     public class DataNotFoundException extends RuntimeException{
         private static final long serialVersionUID = 1L;
 

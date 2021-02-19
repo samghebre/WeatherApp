@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather</title>
+</head>
+<style>
+div{
+  font-weight: bold;
+  color: yellow; /* incorrect spelling of the color property */
+  font-size: 100%;
+  background-color:black
+}
+    </style>
+<body>
+
+
+<div>
+
+    <h3>City</h3>
+    <p th:text="${weather.cityName} + 'City'">City</p>
+    <h3>Temperature</h3>
+    <p th:text="${weather.temp} + '&#8457;">Temperature</p>
+    <h3>Feels like</h3>
+    <p th:text="${weather.feels_like}">Feels Like</p>
+    <h3>Minimum</h3>
+    <p th:text="${weather.temp_min} + '&#8457;'">Minimum</p>
+    <h3>Maximum</h3>
+    <p th:text="${weather.temp_max} + '&#8457;'">Maximum</p>
+    <h3>Pressure</h3>
+    <p th:text="${weather.pressure} + '&#8457;'">Pressure</p>
+    <h3>Humidity</h3>
+    <p th:text="${weather.humidity} + '&#8457;'">Humidity</p>
+    <h3>Wind Speed</h3>
+    <p th:text="${weather.windSpeed} + ' mph'"></p>
+
+</div>
+
+</body>
+</html>
