@@ -30,7 +30,7 @@ public class WeatherAppApplication implements CommandLineRunner {
 			String weatherResourceURL = String.format("http://api.openweathermap.org/data/2.5/weather?q=%s,%s,%s&appid=%s", city_name, state_code, country_code, API_key);
 
 			ResponseEntity<WeatherResponse> response = restTemplate.getForEntity(weatherResourceURL , WeatherResponse.class);
-			Weather[] data = response.getBody().getWeathers();
+			Weather[] data = response.getBody().getWeather().toArray(new Weather[0]);
 			for(Weather weather : data)
 				logger.info(weather.toString());
 	}

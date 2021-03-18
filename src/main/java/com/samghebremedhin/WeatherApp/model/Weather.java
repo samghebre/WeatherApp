@@ -1,5 +1,7 @@
 package com.samghebremedhin.WeatherApp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Table(name="weather")
@@ -9,11 +11,12 @@ public class Weather {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @OneToOne
-    private Main main;
-    @OneToOne
-    private Coord coord;
+
+    @JsonIgnore
+    @ManyToOne()
+    private WeatherResponse weatherResponse;
     private String description;
+    @JsonIgnore
     private String cityName;
 
 
@@ -29,13 +32,6 @@ public class Weather {
         this.id = id;
     }
 
-    public Main getMain() {
-        return main;
-    }
-
-    public void setMain(Main main) {
-        this.main = main;
-    }
 
     public String getDescription() {
         return description;
@@ -45,15 +41,6 @@ public class Weather {
         this.description = description;
     }
 
-
-
-    public Coord getCoord() {
-        return coord;
-    }
-
-    public void setCoord(Coord coord) {
-        this.coord = coord;
-    }
 
     public String getCityName() {
         return cityName;
@@ -67,8 +54,6 @@ public class Weather {
     public String toString() {
         return "Weather{" +
                 "id=" + id +
-                ", main=" + main +
-                ", coord=" + coord +
                 ", description='" + description + '\'' +
                 ", cityName='" + cityName + '\'' +
                 '}';

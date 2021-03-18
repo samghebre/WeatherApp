@@ -1,17 +1,17 @@
 package com.samghebremedhin.WeatherApp.service;
 
-import com.samghebremedhin.WeatherApp.model.Weather;
+import com.samghebremedhin.WeatherApp.model.WeatherResponse;
 
 import java.util.List;
 
 public interface WeatherService {
 
 
-    List<Weather>getAllWeather();
+    List<WeatherResponse> getAllWeather();
 
-    Weather getWeatherById(long weatherId);
-    Weather getWeatherByCityName(String cityName);
-    Weather getWeatherByCoordId(Long id);
+    WeatherResponse getWeatherById(long id);
+//    WeatherResponse getWeatherByCityName(String cityName);
+    WeatherResponse getWeatherByCoordId(Long id);
 
 
 }

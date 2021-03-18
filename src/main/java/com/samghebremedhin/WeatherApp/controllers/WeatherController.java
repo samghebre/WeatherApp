@@ -1,6 +1,7 @@
 package com.samghebremedhin.WeatherApp.controllers;
 
 import com.samghebremedhin.WeatherApp.model.Weather;
+import com.samghebremedhin.WeatherApp.model.WeatherResponse;
 import com.samghebremedhin.WeatherApp.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,22 +18,21 @@ public class WeatherController {
     private WeatherService weatherService;
 
     @GetMapping("/weather")
-    public ResponseEntity<List<Weather>> getAllWeather(){
+    public ResponseEntity<List<WeatherResponse>> getAllWeather(){
         return ResponseEntity.ok().body(weatherService.getAllWeather());
     }
 
     @GetMapping("/weather/{id}")
-    public ResponseEntity<Weather> getWeatherById(@PathVariable long id){
+    public ResponseEntity<WeatherResponse> getWeatherById(@PathVariable long id){
         return ResponseEntity.ok().body(this.weatherService.getWeatherById(id));
     }
-
-    @GetMapping("/weather/{cityName}")
-    public ResponseEntity<Weather> getWeatherByCityName(@PathVariable String cityName){
-        return ResponseEntity.ok().body(this.weatherService.getWeatherByCityName(cityName));
-    }
+//    @GetMapping("/weather/{cityName}")
+//    public ResponseEntity<WeatherResponse> getWeatherByCityName(@PathVariable String cityName){
+//        return ResponseEntity.ok().body(this.weatherService.getWeatherByCityName(cityName));
+//    }
 
     @GetMapping("/coordinate/{coordId}")
-    public ResponseEntity<Weather> getWeatherByCoordId(@PathVariable Long coordId){
+    public ResponseEntity<WeatherResponse> getWeatherByCoordId(@PathVariable Long coordId){
         return ResponseEntity.ok().body(this.weatherService.getWeatherByCoordId(coordId));
     }
 
